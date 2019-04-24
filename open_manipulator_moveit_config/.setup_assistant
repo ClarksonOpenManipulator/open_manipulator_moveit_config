@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: assem_urdf10_good
+    relative_path: urdf/assem_urdf10_good.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/assem_urdf10_good.srdf
+  CONFIG:
+    author_name: jake
+    author_email: todo@email.com
+    generated_timestamp: 1536771202

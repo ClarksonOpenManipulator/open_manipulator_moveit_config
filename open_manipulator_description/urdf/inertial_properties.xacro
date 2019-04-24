@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+   <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+   
+   
+<!-- Defines Inertial Properties for Base Link -->
+   <xacro:property name="bl_ixx" value= "0.0001796" />
+   <xacro:property name="bl_ixy" value= "0.00000006" />
+   <xacro:property name="bl_ixz" value= "0.00000005" />
+   <xacro:property name="bl_iyy" value= "0.00017198" />
+   <xacro:property name="bl_iyz" value= "0.00000193" />
+   <xacro:property name="bl_izz" value= "0.00027331" />
+   
+<!-- Defines Inertial Properties for Link 1 -->
+   <xacro:property name="l1_ixx" value= "0.0001072" />
+   <xacro:property name="l1_ixy" value= "0" />
+   <xacro:property name="l1_ixz" value= "2.16E-06" />
+   <xacro:property name="l1_iyy" value= "0.00012565" />
+   <xacro:property name="l1_iyz" value= "-3.0E-08" />
+   <xacro:property name="l1_izz" value= "6.775E-05" />
+   
+<!-- Defines Mass and Inertial Properties for Link 2 -->
+   <xacro:property name="l2_ixx" value= "0.00136041" />
+   <xacro:property name="l2_ixy" value= "1.4E-07" />
+   <xacro:property name="l2_ixz" value= "1.848E-08" />
+   <xacro:property name="l2_iyy" value= "0.00140065" />
+   <xacro:property name="l2_iyz" value= "-9.8E-07" />
+   <xacro:property name="l2_izz" value= "0.00012542" /> 
+   
+<!-- Defines Mass and Inertial Properties for Link 3 -->
+   <xacro:property name="l3_ixx" value= "0.00084745" />
+   <xacro:property name="l3_ixy" value= "4E-08" />
+   <xacro:property name="l3_ixz" value= "-1.7e-07" />
+   <xacro:property name="l3_iyy" value= "0.00083862" />
+   <xacro:property name="l3_iyz" value= "-9.387e-05" />
+   <xacro:property name="l3_izz" value= "9.478e-05" /> 
+   
+<!-- Defines Mass and Inertial Properties for Link 4 -->
+   <xacro:property name="l4_ixx" value= "4.08e-05" />
+   <xacro:property name="l4_ixy" value= "1e-08" />
+   <xacro:property name="l4_ixz" value= "4.4e-07" />
+   <xacro:property name="l4_iyy" value= "4.422e-05" />
+   <xacro:property name="l4_iyz" value= "1.3e-07" />
+   <xacro:property name="l4_izz" value= "2.465e-05" /> 
+
+<!-- Defines Mass and Inertial Properties for Link 5 -->
+   <xacro:property name="l5_ixx" value= "6.096e-05" />
+   <xacro:property name="l5_ixy" value= "1e-08" />
+   <xacro:property name="l5_ixz" value= "-1e-08" />
+   <xacro:property name="l5_iyy" value= "4.934e-05" />
+   <xacro:property name="l5_iyz" value= "-8.17e-06" />
+   <xacro:property name="l5_izz" value= "4.684e-05" />
+   
+<!-- Defines Mass and Inertial Properties for Link 6 -->
+   <xacro:property name="l6_ixx" value= "6.317e-05" />
+   <xacro:property name="l6_ixy" value= "1e-08" />
+   <xacro:property name="l6_ixz" value= "2e-08" />
+   <xacro:property name="l6_iyy" value= "6.152e-05" />
+   <xacro:property name="l6_iyz" value= "9.09e-06" />
+   <xacro:property name="l6_izz" value= "5.762e-05" /> 
+
+<!-- Defines Mass and Inertial Properties for Link 7 -->
+   <xacro:property name="l7_ixx" value= "0.000000365" />
+   <xacro:property name="l7_ixy" value= "0.000000158" />
+   <xacro:property name="l7_ixz" value= "0.00000007033" />
+   <xacro:property name="l7_iyy" value= "0.000000471" />
+   <xacro:property name="l7_iyz" value= "0.00000005" />
+   <xacro:property name="l7_izz" value= "0.000000751" /> 
+   
+<!-- Defines Mass and Inertial Properties for Gripper -->
+   <xacro:property name="g_ixx" value= "0.00000490" />
+   <xacro:property name="g_ixy" value= "0" />
+   <xacro:property name="g_ixz" value= "0.00000032" />
+   <xacro:property name="g_iyy" value= "0.00000435" />
+   <xacro:property name="g_iyz" value= "0" />
+   <xacro:property name="g_izz" value= "0.00000154" /> 
+   
+
+   
+</robot>

@@ -1,0 +1,475 @@
+<?xml version="1.0"?>
+<!-- Open_Manipulator Chain -->
+<robot name="open_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find open_manipulator_description)/urdf/open_manipulator.gazebo.xacro"/>
+<!-- Import Rviz colors -->
+  <xacro:include filename="$(find open_manipulator_description)/urdf/materials.xacro" />
+<!-- Import inertial Properties-->
+  <xacro:include filename="$(find open_manipulator_description)/urdf/inertial_properties.xacro" />
+<!-- Import inertial Properties-->
+  <xacro:include filename="$(find open_manipulator_description)/urdf/mass_properties.xacro" />
+   
+ <!-- World -->
+   <link name="world">
+   </link>
+
+<!-- World fixed joint -->
+   <joint name="world_fixed" type="fixed">
+     <parent link="world"/>
+     <child link="base_link"/>
+   </joint>
+
+<!-- Base Link -->
+  <link name="base_link">
+	 <inertial>
+      <mass value="${bl_mass}" />
+      <origin xyz="${bl_cmx} ${bl_cmy} ${bl_cmz}"/>
+      <inertia
+        ixx="${bl_ixx}"
+        ixy="${bl_ixy}"
+        ixz="${bl_ixz}"
+        iyy="${bl_iyy}"
+        iyz="${bl_iyz}"
+        izz="${bl_izz}" />
+    </inertial>
+	<visual>
+		<geometry>
+        	<mesh filename="package://open_manipulator_description/meshes/base_link.dae"/>
+		</geometry>
+		<material name="grey"/>
+	</visual>
+	<collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/base_link.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+
+<!-- Link 1 --> 
+  <link name="link1">
+    <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link1.dae"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link1.dae"/>
+      </geometry>
+    </collision>
+
+	<inertial>
+      <mass value="${l1_mass}" />
+      <origin xyz="${l1_cmx} ${l1_cmy} ${l1_cmz}"/>
+      <inertia
+        ixx="${l1_ixx}"
+        ixy="${l1_ixy}"
+        ixz="${l1_ixz}"
+        iyy="${l1_iyy}"
+        iyz="${l1_iyz}"
+        izz="${l1_izz}" />
+    </inertial>
+  </link>
+
+<!-- Joint 1 -->
+  <joint name="id_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.0405"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="2.8" effort="3.1" lower="${-pi}" upper="${pi}" />
+  </joint>
+
+<!-- Transmission 1 -->
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!--  Link 2-->
+  <link name="link2">
+    
+	<visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link2.dae"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link2.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="${l2_mass}" />
+      <origin xyz="${l2_cmx} ${l2_cmy} ${l2_cmz}"/>
+      <inertia 
+        ixx="${l2_ixx}"
+        ixy="${l2_ixy}"
+        ixz="${l2_ixz}"
+        iyy="${l2_iyy}"
+        iyz="${l2_iyz}"
+        izz="${l2_izz}" />
+    </inertial>
+  </link>
+
+<!--  Joint 2 -->
+  <joint name="id_2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.056"/>
+    <axis xyz="1 0 0"/>
+    <limit velocity="2.9" effort="9.9" lower="-1.92" upper="1.83" />
+  </joint>
+  
+<!-- Transmission 2 -->
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!--  Link 3 -->
+  <link name="link3">
+    <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link3.dae"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link3.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="${l3_mass}" />
+      <origin xyz="${l3_cmx} ${l3_cmy} ${l3_cmz}"/>
+      <inertia 
+        ixx="${l3_ixx}"
+        ixy="${l3_ixy}"
+        ixz="${l3_ixz}"
+        iyy="${l3_iyy}"
+        iyz="${l3_iyz}"
+        izz="${l3_izz}" />
+    </inertial>
+  </link>
+
+<!--  Joint 3 -->
+  <joint name="id_3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 0 .1935" />
+    <axis xyz="1 0 0"/>
+    <limit velocity="2.9" effort="9.9" lower="-2.33" upper="2.36" />
+  </joint>
+
+<!-- Transmission 3 -->
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!--  Link 4 -->
+  <link name="link4">
+    <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link4.dae"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link4.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="${l4_mass}" />
+      <origin xyz="${l4_cmx} ${l4_cmy} ${l4_cmz}"/>
+      <inertia 
+        ixx="${l4_ixx}"
+        ixy="${l4_ixy}"
+        ixz="${l4_ixz}"
+        iyy="${l4_iyy}"
+        iyz="${l4_iyz}"
+        izz="${l4_izz}" />
+    </inertial>
+
+  </link>
+
+<!--  Joint 4-->
+  <joint name="id_4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0 0 0.201"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="2.8" effort="3.1" lower="${-pi}" upper="${pi}" />
+  </joint>
+
+<!-- Transmission 4 -->
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!--  Link 5 -->
+  <link name="link5">
+    <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link5.dae"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link5.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="${l5_mass}" />
+      <origin xyz="${l5_cmx} ${l5_cmy} ${l5_cmz}"/>
+      <inertia
+        ixx="${l5_ixx}"
+        ixy="${l5_ixy}"
+        ixz="${l5_ixz}"
+        iyy="${l5_iyy}"
+        iyz="${l5_iyz}"
+        izz="${l5_izz}" />
+    </inertial>
+  </link>
+
+<!--  Joint 5-->
+  <joint name="id_5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz="0 0 0.0405"/>
+    <axis xyz="1 0 0"/>
+    <limit velocity="2.8" effort="3.1" lower="-2.0" upper="1.69" />
+  </joint>
+
+<!-- Transmission 5 -->
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  
+<!--  Link 6 -->
+  <link name="link6">
+    <inertial>
+      <mass value="${l6_mass}" />
+      <origin xyz="${l6_cmx} ${l6_cmy} ${l6_cmz}"/>
+      <inertia
+        ixx="${l6_ixx}"
+        ixy="${l6_ixy}"
+        ixz="${l6_ixz}"
+        iyy="${l6_iyy}"
+        iyz="${l6_iyz}"
+        izz="${l6_izz}" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link6.dae" />
+      </geometry>
+      <material name="grey" />
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/link6.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+<!--  Joint 6 -->
+  <joint name="id_6" type="revolute">
+    <origin xyz="0 0 0.064"/>
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 0 1" />
+	<limit velocity="2.8" effort="3.1" lower="${-pi}" upper="${pi}" />
+  </joint>
+
+<!-- Transmission 6 -->
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+ 
+<!-- Link 7-->
+   <link name="link7">
+    <inertial>
+      <mass value="${l7_mass}" />
+      <origin xyz="${l7_cmx} ${l7_cmy} ${l7_cmz}"/>
+      <inertia
+        ixx="${l7_ixx}"
+        ixy="${l7_ixy}"
+        ixz="${l7_ixz}"
+        iyy="${l7_iyy}"
+        iyz="${l7_iyz}"
+        izz="${l7_izz}" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://open_manipulator_description/meshes/link7.dae" />
+      </geometry>
+      <material name="grey" />
+    </visual>
+    <collision>
+      <geometry>
+        <mesh
+          filename="package://open_manipulator_description/meshes/link7.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+<!-- Joint 7 -->
+	<joint
+    name="id_7"
+    type="revolute">
+    <origin xyz="0 0 0.039" />
+    <parent link="link6" />
+    <child link="link7" />
+    <axis xyz="0 0 1" />
+    <limit velocity="2.8" effort="3.1" lower="${-pi}" upper="${pi}" />
+  </joint>
+
+  <!-- Transmission 7 --> 
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="id_7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!--  Gripper Left--> 
+  
+<link name="gripper_l">
+    <inertial>
+      <mass value="${g_mass}" />
+      <origin xyz="${g_cmx} ${g_cmy} ${g_cmz}"/>
+      <inertia
+        ixx="${g_ixx}"
+        ixy="${g_ixy}"
+        ixz="${g_ixz}"
+        iyy="${g_iyy}"
+        iyz="${g_iyz}"
+        izz="${g_izz}" />
+    </inertial>
+    
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://open_manipulator_description/meshes/gripper.dae" />
+      </geometry>
+      <material name="grey" />
+    </visual>
+    
+   <collision>
+      <geometry>
+        <mesh
+          filename="package://open_manipulator_description/meshes/gripper.dae" />
+      </geometry>
+    </collision> 
+  </link>
+
+<!--Gripper Left Joint -->
+  <joint name="joint8" type="prismatic">
+    <origin xyz="-0.015 0 0.0595" rpy="0 0 ${pi}"/>
+    <parent link="link6" />
+    <child link="gripper_l" />
+    <axis xyz="1 0 0" />
+    <limit velocity="0.1" effort=".1" lower="-.033" upper="0"/>
+    <mimic joint="id_7" multiplier="-0.01" offset="-0.0110133334" /> 
+  </joint> 
+
+
+<!--  Gripper Right --> 
+   <link name="gripper_r">
+    <inertial>
+      <mass value="${g_mass}" />
+      <origin xyz="${-g_cmx} ${g_cmy} ${g_cmz}"/>
+      <inertia
+        ixx="${g_ixx}"
+        ixy="${g_ixy}"
+        ixz="${g_ixz}"
+        iyy="${g_iyy}"
+        iyz="${g_iyz}"
+        izz="${g_izz}" />
+    </inertial>
+        <visual>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/gripper.dae" />
+      </geometry>
+      <material name="grey" />
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://open_manipulator_description/meshes/gripper.dae" />
+      </geometry>
+    </collision> 
+  </link>
+  
+<!--Gripper Right Joint -->
+   <joint name="joint9" type="prismatic">
+    <origin xyz="0.015 0 0.0595" />
+    <parent link="link6" />
+    <child link="gripper_r" />
+    <axis xyz="1 0 0" />
+        <limit velocity="0.1" effort=".1" lower="0" upper=".033"/>
+    <mimic joint="joint8" multiplier="1" offset="0" />
+  </joint>
+
+</robot>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+   <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+   
+<!-- Defines Mass Properties for Base Link -->
+   <xacro:property name="bl_mass" value= "0.23311880620" />
+   <xacro:property name="bl_cmx" value= "-0.00002548" />
+   <xacro:property name="bl_cmy" value= "-0.00495518" />
+   <xacro:property name="bl_cmz" value= "0.02321769" />
+   
+<!-- Defines Mass Properties for Link 1-->
+   <xacro:property name="l1_mass" value= "0.2148954" />
+   <xacro:property name="l1_cmx" value= "0.00209897" />
+   <xacro:property name="l1_cmy" value= "-3.145E-05" />
+   <xacro:property name="l1_cmz" value= "0.03141" />
+   
+<!-- Defines Mass Properties for Link 2-->
+   <xacro:property name="l2_mass" value= "0.3501961" />
+   <xacro:property name="l2_cmx" value= "0.00134144" />
+   <xacro:property name="l2_cmy" value= "-3.013E-05" />
+   <xacro:property name="l2_cmz" value= "0.13471054" />
+   
+<!-- Defines Mass Properties for Link 3-->
+   <xacro:property name="l3_mass" value= "0.20522109" />
+   <xacro:property name="l3_cmx" value= "-1.698E-05" />
+   <xacro:property name="l3_cmy" value= "0.00399677" />
+   <xacro:property name="l3_cmz" value= "0.12984563" />
+
+<!-- Defines Mass Properties for Link 4-->
+   <xacro:property name="l4_mass" value= "0.11378884" />
+   <xacro:property name="l4_cmx" value= "-0.00164387" />
+   <xacro:property name="l4_cmy" value= "3.504e-05" />
+   <xacro:property name="l4_cmz" value= "0.02301193" />
+   
+<!-- Defines Mass Properties for Link 5-->
+   <xacro:property name="l5_mass" value= "0.12222061" />
+   <xacro:property name="l5_cmx" value= "-2.083e-05" />
+   <xacro:property name="l5_cmy" value= "-0.01576432" />
+   <xacro:property name="l5_cmz" value= "0.03777592" />
+
+<!-- Defines Mass Properties for Link 6-->
+   <xacro:property name="l6_mass" value= "0.12977859" />
+   <xacro:property name="l6_cmx" value= "-2.637e-05" />
+   <xacro:property name="l6_cmy" value= "-0.01554872" />
+   <xacro:property name="l6_cmz" value= "0.02453859" />
+   
+<!-- Defines Mass Properties for Link 7-->
+   <xacro:property name="l7_mass" value= "0.00482" />
+   <xacro:property name="l7_cmx" value= "-2.637e-05" />
+   <xacro:property name="l7_cmy" value= "-0.01554872" />
+   <xacro:property name="l7_cmz" value= "0.02453859" />
+   
+   
+<!-- Defines Mass Properties for Gripper-->
+   <xacro:property name="g_mass" value= "0.01838602" />
+   <xacro:property name="g_cmx" value= "0.00300341" />
+   <xacro:property name="g_cmy" value= "0" />
+   <xacro:property name="g_cmz" value= "0.01876820" />
+   
+   </robot>

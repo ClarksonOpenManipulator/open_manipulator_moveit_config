@@ -1,0 +1,17 @@
+<library path="libopen_manipulator_moveit_config">
+   <!--<class name="open_manipulator_moveit_config/IterativeSplineParameterization" 
+   type="open_manipulator_moveit_config::IterativeSplineParameterization" 
+   base_class_type="planning_request_adapter::PlanningRequestAdapter"> 
+      <description>
+         Resamples trajectory to a specified sample count at a fixed sample rate.
+      </description> 
+   </class>-->
+   
+   <class name="open_manipulator_moveit_config/CubicSplineAdapter"
+	       type="open_manipulator_moveit_config::CubicSplineAdapter" 	
+	       base_class_type="planning_request_adapter::PlanningRequestAdapter">
+      <description>
+         DOES STUFF!!!
+      </description>
+   </class>
+</library>

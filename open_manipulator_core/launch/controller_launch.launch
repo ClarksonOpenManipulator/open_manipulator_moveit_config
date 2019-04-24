@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+   <include file="$(find open_manipulator_controllers)/launch/position_controller.launch"/> 
+   <arg name="position_topic" default="/position_controller/position_command" />
+   
+   <node name="dynamixel_action_server" pkg="open_manipulator_core" type="trajectory_server" required="true" output="screen" >
+      <param name="goal_position_topic_name"  value="$(arg position_topic)"/>
+      <param name="trajectory_action_rate" value="100" />
+   </node>
+   <node name="gripper_commander" pkg="open_manipulator_core" type="gripper_commander" required="true" output="screen" >
+      <param name="goal_position_topic_name"  value="$(arg position_topic)"/>
+   </node>
+ </launch>
